@@ -1,0 +1,42 @@
+# Blender 3.6.0 MTL File: 'None'
+# www.blender.org
+
+newmtl blinn1
+Ns 63.117920
+Ka 0.500000 0.500000 0.500000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd T:/Unity Projects/VR-Main-Chess/VR-ChessGame/VR/Assets/Prefabs/Chess Pieces/ChessSet.00/3.Knight/Materials/sword_shield_wht.jpg
+
+newmtl blinn2.001
+Ns 63.117920
+Ka 0.500000 0.500000 0.500000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+map_Kd T:/Unity Projects/VR-Main-Chess/VR-ChessGame/VR/Assets/Prefabs/Chess Pieces/ChessSet.00/3.Knight/Materials/KNIGHT TEXTURE_white_.jpg
+
+newmtl pasted__polySurface35SG2.002
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd T:/Unity Projects/VR-Main-Chess/VR-ChessGame/VR/Assets/Prefabs/Chess Pieces/ChessSet.00/3.Knight/Materials/Horse Armour W.jpg
+
+newmtl pasted__polySurface35SG3.002
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd T:/Unity Projects/VR-Main-Chess/VR-ChessGame/VR/Assets/Prefabs/Chess Pieces/ChessSet.00/3.Knight/Materials/Horse Body W.jpg
