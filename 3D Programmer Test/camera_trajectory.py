@@ -1,4 +1,5 @@
 import cv2
+import keyboard
 import open3d as o3d
 import json
 import time
@@ -7,6 +8,8 @@ import numpy as np
 # We have the option to load the trajectory data from json or enter manualy
 use_json = False
 frames = range(100)
+
+export_vid = False
 
 # Load the camera trajectory from the JSON file
 with open("camera_trajectory.json", "r") as f:
@@ -47,6 +50,20 @@ camera_params.intrinsic = camera_intrinsics
 
 ctr = vis.get_view_control()
 
+speed_modifier = 0.0
+
+def get_speed_input():
+    global speed_modifier
+    
+    # Increase rotation speed
+    if keyboard.is_pressed('Z'):
+        speed_modifier = min(speed_modifier + 0.01, 0.04)
+        print(f"Speed: {speed_modifier}")
+    # Decrease rotation speed
+    if keyboard.is_pressed('X'):
+        speed_modifier = max(speed_modifier - 0.01, -0.4)
+        print(f"Speed: {speed_modifier}")
+
 def capture_image():
     # Set video params
     img = vis.capture_screen_float_buffer(do_render=True)
@@ -69,11 +86,14 @@ def move_camera(extrinsic_matrix):
     
     # Print camera's current location
     camera_location = extrinsic_matrix[:3, 3]
-    print(f"Camera Location: {camera_location}")
+    # print(f"Camera Location: {camera_location}")
     
-    capture_image()
+    if export_vid:
+        capture_image()
     
-    time.sleep(0.05)
+    get_speed_input()
+    
+    time.sleep(0.05 - speed_modifier)
 
 # Apply each frame's extrinsic parameters to the camera in a loop
 def apply_camera_trajectory(frames, trajectory):
