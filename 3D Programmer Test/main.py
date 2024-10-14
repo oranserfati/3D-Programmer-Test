@@ -68,12 +68,6 @@ def move_camera_along_path(camera_path, frame):
     ctr.set_front((np.array(point)))  
     ctr.set_up([0, 0, 1])  
     ctr.set_zoom(0.5)  
-    
-# Function to show text on the window
-def show_text_on_window(text, position):
-    # Add 3D label to the mesh at the desired position
-    vis.add_3d_label(position, text)
-    #vis.update_renderer()
 
 # Main function to run the animation
 def run_animation():
@@ -94,6 +88,8 @@ def run_animation():
         if keyboard.is_pressed('X'):
             speed_multi = max(speed_multi - 1, 1)
         frame_buffer += 1 * speed_multi
+         # Slow down the movement for better visualization
+        time.sleep(0.01)
         vis.update_renderer()
     vis.destroy_window()
  
