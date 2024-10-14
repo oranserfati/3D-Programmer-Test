@@ -62,44 +62,39 @@ ctr = vis.get_view_control()
 
 # Function to move the camera along the path
 def move_camera_along_path(camera_path, frame):
-    point = camera_path[frame]
-        
+    point = camera_path[frame]   
     # Set the camera position and rotation
     ctr.set_lookat(center)  
     ctr.set_front((np.array(point)))  
     ctr.set_up([0, 0, 1])  
     ctr.set_zoom(0.5)  
-
-    # Slow down the movement for better visualization
-    time.sleep(0.01)
+    
+# Function to show text on the window
+def show_text_on_window(text, position):
+    # Add 3D label to the mesh at the desired position
+    vis.add_3d_label(position, text)
+    #vis.update_renderer()
 
 # Main function to run the animation
 def run_animation():
     
-    f = 0
+    frame_buffer = 0
     speed_multi = 1
     
     # Keep the window open until the user closes it
     while vis.poll_events():
-        
         # Reset for continues rotation
-        if f > num_frames - 1: 
-            f = 0
-            
-        move_camera_along_path(camera_path, f)
-        
+        if frame_buffer > num_frames - 1: 
+            frame_buffer = 0   
+        move_camera_along_path(camera_path, frame_buffer)
         # Increase rotation speed
         if keyboard.is_pressed('Z'):
             speed_multi = min(speed_multi + 1, 10)
-           
         # Decrease rotation speed
         if keyboard.is_pressed('X'):
             speed_multi = max(speed_multi - 1, 1)
-        
-        f += 1 * speed_multi
-            
+        frame_buffer += 1 * speed_multi
         vis.update_renderer()
-
     vis.destroy_window()
  
 run_animation()
